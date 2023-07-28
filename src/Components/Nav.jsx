@@ -6,8 +6,8 @@ export default function Nav(){
     const linkList =[
         {name: "Home",
         link: "/"},
-        {name: "Events",
-        link: "/events"},
+        {name: "About",
+        link: "/about"},
         {name: "Admin",
         link: "/admin"},
 
@@ -15,7 +15,8 @@ export default function Nav(){
     return(
         <nav>
             <ul>
-            {linkList.map( link => <li><Link to={link.link} >{link.name}</Link></li>               )}
+            {linkList.map((link, index) => 
+            <li key={index}><Link to={link.link}>{link.name}</Link></li>)}
             </ul>
         </nav>
     )
