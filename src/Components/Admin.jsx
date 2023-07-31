@@ -3,11 +3,11 @@ import {MOCK_API_URL} from "../Config"
 import AdminForm from './AdminForm';
 
 export default function Admin() {
-    const eventTable = MOCK_API_URL + "user";
+    const eventTable = MOCK_API_URL + "events";
 
     const [events, setEvents] = useState([{
         name: '',
-        data: '',
+        date: '',
         image: '',
         location: '',
         resources: ''
@@ -15,7 +15,7 @@ export default function Admin() {
     
       const [newEvent, setNewEvent] = useState([{
         name: '',
-        data: '',
+        date: '',
         image: '',
         location: '',
         resources: ''
@@ -35,37 +35,50 @@ export default function Admin() {
     //populates data on page visit
     useEffect(()=> {getEvents()}, [])
 
-    const postUser = (e) => {
+    const postEvent = (e) => {
         e.preventDefault();
       
         fetch(eventTable, {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify(newUser)
+          body: JSON.stringify(newEvent)
         }).then(() => getEvents())
       
         e.target.reset()
       }
       
-      function handleName (nameValue) {
-        setNewUser({
-          ...newUser,
-          name: nameValue,
+      function handleName (eventNameValue) {
+        setNewEvent({
+          ...newEvent,
+          name: eventNameValue,
         })
       }
       
-      function handleJobTitle (jobValue) {
-        setNewUser({
-          ...newUser,
-          jobTitle: jobValue,
-          })
-      
+      function handleDate (eventDateValue) {
+        setNewEvent({
+          ...newEvent,
+          date: eventDateValue,
+        })
       }
-      
-      function handleCompanyName (companyNameValue) {
-        setNewUser({
-          ...newUser,
-          companyName: companyNameValue
+
+      function handleImage (eventDateImage) {
+        setNewEvent({
+          ...newEvent,
+          image: eventDateImage,
+        })
+      }
+
+      function handleLocation (eventLocationValue) {
+        setNewEvent({
+          ...newEvent,
+          location: eventLocationValue,
+        })
+      }
+
+      function handleResources (eventResourcesValue) {
+        setNewEvent({
+          ...newEvent,
+          resources: eventResourcesValue,
         })
       }
       
@@ -97,7 +110,15 @@ export default function Admin() {
 
     return (
         <><h3>Admin Page</h3>
-        <AdminForm />
+        <AdminForm 
+        newEvent={newEvent}
+        postEvent={postEvent}
+        handleName={handleName}
+        handleDate={handleDate}
+        handleImage={handleImage}
+        handleLocation={handleLocation}
+        handleResources={handleResources}
+        />
         </>
     )
 }

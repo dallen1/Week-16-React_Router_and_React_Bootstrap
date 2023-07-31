@@ -3,7 +3,7 @@ import {MOCK_API_URL} from "../Config"
 
 
 export default function Home() {
-    const eventTable = MOCK_API_URL + "user";
+    const eventTable = MOCK_API_URL + "events";
   
 const [events, setEvents] = useState([{
     name: '',
