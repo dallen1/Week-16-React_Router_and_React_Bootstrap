@@ -29,8 +29,13 @@ export default function App() {
       resources: ''
   }])
   
-  const [updateEvent, setUpdateEvent] = useState('')
-  
+  const [updatedEvent, setUpdatedEvent] = useState([{
+    name: '',
+    date: '',
+    image: '',
+    location: '',
+    resources: ''
+}])
   
   const getEvents = () => {
   
@@ -100,23 +105,16 @@ export default function App() {
       }   
     }
     
-    const updateUser = (user) => {
-      let updatedUser = user
-      updatedUser.name = updatedName
-      fetch(`${eventTable}/${user.id}`, {
+    const updateEvent = (e, id) => {
+      e.preventDefault();
+
+      fetch(`${eventTable}/${id}`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(updatedUser)
+        body: JSON.stringify(newEvent)
       }).then(() => getEvents())
-    
-      function handleUpdatedName (updatedNameValue) {
-        setUpdatedName(updatedNameValue)
-      }
-      
-      const clearName = () => {
-        setUpdatedName('')
-      }
-      
+   
+     
     }
 
   return (
@@ -135,7 +133,15 @@ export default function App() {
     events={events} 
     deleteEvent={deleteEvent}
     />} />
-    <Route path="/admin/event/:id" element={<EditEvent />} />
+    <Route path="/admin/event/:id" element={<EditEvent 
+    events={events}
+    updateEvent={updateEvent}
+    handleDate={handleDate}
+    handleImage={handleImage}
+    handleLocation={handleLocation}
+    handleName={handleName}
+    handleResources={handleResources}
+    />} />
     <Route path="/event/:id" element={<Event events={events}/>} />
     <Route path="/about" element={<About />} />
 

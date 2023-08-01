@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 export default function Event({events}) {
     const { id } = useParams()
     const navigate = useNavigate();
-    const event = events.find(x => x.id == id)
+    const event = events.find(event => event.id == id)
     
 
     return (
