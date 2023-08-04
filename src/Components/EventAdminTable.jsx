@@ -18,7 +18,7 @@ export default function eventTable({events, deleteEvent}){
             <tbody>
             {events.map((event, index) => (
                 <tr key={index}>
-                    <td><Link to={'/event/'+event.id}>{event.name}</Link></td>
+                    <td><Link to={'/events/'+event.id}>{event.name}</Link></td>
                     <td>{event.date}</td>
                     <td>{event.location}</td>
                     <td><button><Link to={'event/'+event.id}>✎</Link></button></td>

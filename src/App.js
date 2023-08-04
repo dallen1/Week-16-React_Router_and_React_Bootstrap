@@ -8,6 +8,10 @@ import Nav from './Components/Nav';
 import Event from './Components/Event';
 import EditEvent from './Components/EditEvent';
 import {MOCK_API_URL} from "./Config"
+import 'bootstrap/dist/css/bootstrap.min.css';
+import PageNotFound from './Components/PageNotFound';
+
+
 
 
 export default function App() {
@@ -120,6 +124,7 @@ export default function App() {
   return (
     <>
     <Nav />
+    <div className='container-fluid'>
     <Routes>
     <Route path="/" element={<Home />} />
     <Route path="/admin" element={<Admin 
@@ -142,12 +147,11 @@ export default function App() {
     handleName={handleName}
     handleResources={handleResources}
     />} />
-    <Route path="/event/:id" element={<Event events={events}/>} />
+    <Route path="/events/:id" element={<Event events={events}/>} />
     <Route path="/about" element={<About />} />
-
-
-    
+    <Route path="*" element={<PageNotFound />}/>
     </Routes>
+    </div>
     </>
     );
 }
