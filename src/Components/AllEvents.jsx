@@ -16,8 +16,8 @@ export default function allEvents({events}) {
         <h2>All Events</h2>
         <Row>
         {events.map((event, index) => (
-            <Col>
-                <Card body key={index} style={style}>
+            <Col key={index}>
+                <Card body style={style}>
                     <b>{event.name}</b> at <b>{event.location}</b> on <b>{event.date}</b>&nbsp;
                     <LinkContainer to={`/events/`+event.id}>
                         <Button href='#' variant="primary">Details</Button>
