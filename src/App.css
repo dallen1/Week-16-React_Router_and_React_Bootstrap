@@ -1,3 +1,18 @@
 body{
    color: navy;
+   padding-bottom: 6rem;
 }
+
+.footer{
+   background-color: black;
+   height: 4rem;
+   bottom: 0;
+   width: 100%;
+   position: fixed;
+   color: white;
+}
+
+.navbar {
+   margin-bottom: 2rem;
+}
+

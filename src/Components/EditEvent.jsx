@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 
 export default function editEvent({
@@ -11,23 +11,36 @@ export default function editEvent({
     handleResources
 }) {
     const { id } = useParams()
+    const navigate = useNavigate();
+
     const event = events.find(event => event.id == id)
 
+    function handleSubmit(e){
+        if (confirm("Are you sure you want to update this Event?") == true) {
+            updateEvent(e, id)
+            navigate(-1)
+        } else {return}
+
+    }
+
     return (
-        <form onSubmit={(e) => updateEvent(e, id)}>
+        <>
+        <form onSubmit={(e) => handleSubmit(e)}>
         <h4>Update Event {event.name}</h4>
-        <label>Name:</label>
-        <input onChange={(e) => handleName(e.target.value)} defaultValue={event.name} required></input>&nbsp;
-        <label>Date:</label>
-        <input type='date' onChange={(e) => handleDate(e.target.value)} defaultValue={event.date} required></input>&nbsp;
-        <label>Image URL:</label>
-        <input onChange={(e) => handleImage(e.target.value)} defaultValue={event.image} required></input>&nbsp;
-        <label>Location:</label>
-        <input onChange={(e) => handleLocation(e.target.value)} defaultValue={event.location} required></input>&nbsp;
-        <label>Resources:</label>
-        <input onChange={(e) => handleResources(e.target.value)} defaultValue={event.resources}></input>&nbsp;
-        <button className='btn btn-primary'>Submit</button>
+        <label>Name:</label><br/>
+        <input onChange={(e) => handleName(e.target.value)} defaultValue={event.name} required></input><br/><br/>
+        <label>Date:</label><br/>
+        <input type='date' onChange={(e) => handleDate(e.target.value)} defaultValue={event.date} required></input><br/><br/>
+        <label>Image URL:</label><br/>
+        <input onChange={(e) => handleImage(e.target.value)} defaultValue={event.image} required></input><br/><br/>
+        <label>Location:</label><br/>
+        <input onChange={(e) => handleLocation(e.target.value)} defaultValue={event.location} required></input><br/><br/>
+        <label>Resources:</label><br/>
+        <textarea onChange={(e) => handleResources(e.target.value)} defaultValue={event.resources}></textarea><br/><br/>
+        <button className='btn btn-primary' >Submit</button><br/><br/>
 
     </form>
+        <button className="btn btn-primary" onClick={() => navigate(-1)}>Back</button>
+        </>
     )
 }

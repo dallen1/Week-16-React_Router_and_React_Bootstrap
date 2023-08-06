@@ -3,13 +3,14 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './Components/Home'
 import Admin from './Components/Admin';
-import About from './Components/About';
 import Nav from './Components/Nav';
 import Event from './Components/Event';
 import EditEvent from './Components/EditEvent';
 import {MOCK_API_URL} from "./Config"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PageNotFound from './Components/PageNotFound';
+import Footer from './Components/Footer';
+import AllEvents from './Components/AllEvents';
 
 
 
@@ -32,14 +33,6 @@ export default function App() {
       location: '',
       resources: ''
   }])
-  
-  const [updatedEvent, setUpdatedEvent] = useState([{
-    name: '',
-    date: '',
-    image: '',
-    location: '',
-    resources: ''
-}])
   
   const getEvents = () => {
   
@@ -126,7 +119,9 @@ export default function App() {
     <Nav />
     <div className='container-fluid'>
     <Routes>
-    <Route path="/" element={<Home />} />
+    <Route path="/" element={<Home 
+    events={events}
+    />} />
     <Route path="/admin" element={<Admin 
     newEvent={newEvent}
     postEvent={postEvent}
@@ -147,11 +142,12 @@ export default function App() {
     handleName={handleName}
     handleResources={handleResources}
     />} />
+    <Route path='/events' element={<AllEvents events={events}/>} />
     <Route path="/events/:id" element={<Event events={events}/>} />
-    <Route path="/about" element={<About />} />
     <Route path="*" element={<PageNotFound />}/>
     </Routes>
     </div>
+    <Footer />
     </>
     );
 }

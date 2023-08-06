@@ -1,5 +1,7 @@
 import EventAdminForm from './EventAdminForm';
 import EventAdminTable from './EventAdminTable';
+import Accordion from 'react-bootstrap/Accordion';
+
 
 export default function Admin({
   newEvent,
@@ -15,7 +17,12 @@ export default function Admin({
 
 
     return (
-        <><h3>Admin Page</h3>
+      <>
+      <h3>Admin Page</h3>
+      <Accordion defaultActiveKey="1">
+      <Accordion.Item eventKey="0">
+        <Accordion.Header>Add Event</Accordion.Header>
+        <Accordion.Body>
         <EventAdminForm 
         newEvent={newEvent}
         postEvent={postEvent}
@@ -25,10 +32,15 @@ export default function Admin({
         handleLocation={handleLocation}
         handleResources={handleResources}
         />
+        </Accordion.Body>
+        </Accordion.Item>
+
+        </Accordion>
+
         <EventAdminTable
         events={events} 
         deleteEvent={deleteEvent}
         />
-        </>
+      </>
     )
 }
