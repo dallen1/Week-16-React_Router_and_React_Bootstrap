@@ -11,6 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import PageNotFound from './Components/PageNotFound';
 import Footer from './Components/Footer';
 import AllEvents from './Components/AllEvents';
+import { Container } from 'react-bootstrap';
 
 
 
@@ -117,7 +118,7 @@ export default function App() {
   return (
     <>
     <Nav />
-    <div className='container-fluid'>
+    <Container fluid>
     <Routes>
     <Route path="/" element={<Home 
     events={events}
@@ -146,7 +147,7 @@ export default function App() {
     <Route path="/events/:id" element={<Event events={events}/>} />
     <Route path="*" element={<PageNotFound />}/>
     </Routes>
-    </div>
+    </Container>
     <Footer />
     </>
     );

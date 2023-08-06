@@ -18,7 +18,7 @@ export default function Admin({
 
     return (
       <>
-      <h3>Admin Page</h3>
+      <h2>Admin Page</h2>
       <Accordion defaultActiveKey="1">
       <Accordion.Item eventKey="0">
         <Accordion.Header>Add Event</Accordion.Header>
@@ -36,7 +36,7 @@ export default function Admin({
         </Accordion.Item>
 
         </Accordion>
-
+        <br/>
         <EventAdminTable
         events={events} 
         deleteEvent={deleteEvent}

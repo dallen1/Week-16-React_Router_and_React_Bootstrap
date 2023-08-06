@@ -13,7 +13,7 @@ export default function allEvents({events}) {
 
     return (
         <Container>
-        <h1>All Events</h1>
+        <h2>All Events</h2>
         <Row>
         {events.map((event, index) => (
             <Col>
