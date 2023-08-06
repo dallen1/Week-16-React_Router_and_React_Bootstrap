@@ -1,10 +1,8 @@
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
-import { Row } from 'react-bootstrap';
-import { Col } from 'react-bootstrap';
-import { Container } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
 import Button from 'react-bootstrap/Button';
+import { Row, Col, Container } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 
 export default function Home({events}) {
 
@@ -44,7 +42,6 @@ export default function Home({events}) {
           <Card.Img variant="top" src={event.image} /> 
           <Card.Body>
             <Card.Title>{event.name}</Card.Title>
-            
           </Card.Body>
           <ListGroup className="list-group-flush">
             <ListGroup.Item>When: {event.date}</ListGroup.Item>
